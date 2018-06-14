@@ -3,6 +3,7 @@ Create a web application where gym admininistrators can add a new membership to 
 
 ### Tech stack
 Front End: bootstrap, Vanilla Javascript, jQuery
+
 Back End: Express.js, MySQL
 
 
