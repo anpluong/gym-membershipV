@@ -9,6 +9,7 @@
   src="https://code.jquery.com/jquery-3.3.1.js"
   integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
   crossorigin="anonymous"></script>
+  <script type='text/javascript' src='./js/homepage.js'></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
     <Link rel="stylesheet" href="./css/style.css">
 </head>
@@ -23,15 +24,15 @@
             </li>
         </nav>
         <div id="main">
-            <form>
+            <form id="memberForm">
                 <div class="form-row">                      
                     <div class="form-group col-md-5">
                         <label for="inputFirstName">First Name</label>
-                        <input type="firstname" class="form-control" id="inputFirstName" placeholder="Your First Name">
+                        <input type="firstname" class="form-control" id="inputFirstName" placeholder="Your First Name" required>
                     </div>
                     <div class="form-group col-md-5">
                         <label for="inputLastName">Last Name</label>
-                        <input type="lastname" class="form-control" id="inputLastName" placeholder="Your Last Name">
+                        <input type="lastname" class="form-control" id="inputLastName" placeholder="Your Last Name" required>
                     </div>
                     <div class="form-group col-md-2">
                         <label for="inputDOB">Date of Birth</label>
@@ -41,11 +42,11 @@
                 <br>
                 <div class="form-row">
                         <div class="custom-control custom-radio custom-control-inline">
-                            <input type="radio" id="female" name="sex"female class="custom-control-input">
+                            <input type="radio" id="female" name="sex" class="custom-control-input" value="F">
                             <label class="custom-control-label" for="female">Female</label>
                         </div>
                         <div class="custom-control custom-radio custom-control-inline">
-                            <input type="radio" id="male" name="sex" class="custom-control-input">
+                            <input type="radio" id="male" name="sex" class="custom-control-input" value="M">
                             <label class="custom-control-label" for="male">Male</label>
                         </div>
                     </div>
@@ -58,7 +59,7 @@
                 <div class="form-row">
                     <div class="form-group col-md-4">                    
                         <label for="city">City</label>
-                        <input type="text" class="form-control" id="address" placeholder="Your City">
+                        <input type="text" class="form-control" id="city" placeholder="Your City">
                     </div>                
                     <div class="form-group col-md-4">
                         <label for="state">State</label>
@@ -124,8 +125,8 @@
             </div>
             <br>
                 <div class="form-group w-25">
-                    <label for="state">Membership Type</label>
-                    <select class="form-control" id="state">
+                    <label for="membershipType">Membership Type</label>
+                    <select class="form-control" id="membershipType">
                         <option selected>Your Membership Type</option>
                         <option value="diamond">Diamond</option>
                         <option value="platinum">Platinum</option>
@@ -135,11 +136,11 @@
                 </div>
                 <br>
                 <div class="custom-control custom-checkbox">
-                        <input type="checkbox" class="custom-control-input" id="status">
+                        <input type="checkbox" class="custom-control-input" id="status" name="active" value="active">
                         <label class="custom-control-label" for="status">Active</label>
                 </div>
                 <br>
-                Description 
+                Note 
                 <br>
                 <textarea id='description' rows="4" cols="50"></textarea>
                 <br>
