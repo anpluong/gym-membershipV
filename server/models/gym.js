@@ -23,7 +23,12 @@ gym.getConnection(err => {
         dob date not null, 
         sex char(1) not null, 
         address varchar(100) not null, 
-        city varchar(50) not null)
+        city varchar(50) not null, 
+        state varchar(20) not null, 
+        zipCode int not null,
+        membershipType varchar(20) not null, 
+        status varchar(20) not null, 
+        description varchar(100))
         `
     gym.query(sql)
     .then((result) => {
