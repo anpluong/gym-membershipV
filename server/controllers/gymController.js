@@ -30,4 +30,7 @@ gymController.postMembership = (req, res, next) => {
     next();
 }
 
+gymController.findMembership = (req, res, next) => {
+
+}
 module.exports = gymController;

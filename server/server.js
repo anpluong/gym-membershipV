@@ -18,4 +18,8 @@ app.post("/postMembership", gymController.postMembership, (req, res) => {
     res.status(200).send(req.body);
 })
 
+app.get("/searchMembership", gymController.findMembership, (req, res) => {
+    res.status(200).send(req.body);
+})
+
 app.listen(3000, () => console.log('Server started at port 3000'))
