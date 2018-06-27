@@ -5,6 +5,7 @@ function create() {
 const search = () => {
     $("#main").on("submit", (e) => {
         $('#member-list').empty();
+        $('tHead').remove();
         e.preventDefault();
 
         const data = {
@@ -18,15 +19,25 @@ const search = () => {
             data
         })
         .done((result) => {
+            
+            if (result.length >= 1) {
+                   const tHead = $(
+                    `<thead>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    </thead>`
+                );
+                $('#table-list').append(tHead);
             result.forEach((member) => {
-                const returnedMember = $(
+                const returnedMember = $(                    
                     `<tr>
                         <td>${member.firstName}</td>
                         <td>${member.lastName}</td>
                     </tr>`
                 )
                 $('#member-list').append(returnedMember);
-            })
+                })
+            }
         })
     })
 }
