@@ -19,8 +19,20 @@ app.post("/postMembership", gymController.postMembership, (req, res) => {
 })
 
 app.post("/searchMembership", gymController.searchMembership, (req, res) => {
-    console.log(res.locals.resultArray)
+    //console.log(res.locals.resultArray)
     res.status(200).send(res.locals.resultArray);
+})
+
+app.get('/update', (req, res) => {
+    res.sendFile(path.join(__dirname, '/../views/update.html'));
+});
+
+app.get('/search', (req, res) => {
+    res.sendFile(path.join(__dirname, '/../views/search.html'));
+});
+
+app.post("/display", gymController.displayMembership, (req, res) => {
+    res.status(200).send(res.locals.member);
 })
 
 app.listen(3000, () => console.log('Server started at port 3000'))

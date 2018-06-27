@@ -2,6 +2,13 @@ function create() {
     window.location.href = '/';
 }
 
+const searchTab = () => {
+    $("#search").on("click", (e) => {               
+        window.location.href = '/search';
+    });
+}
+
+
 const search = () => {
     $("#main").on("submit", (e) => {
         $('#member-list').empty();
@@ -18,19 +25,20 @@ const search = () => {
             type: "POST", 
             data
         })
-        .done((result) => {
-            
+        .done((result) => {            
             if (result.length >= 1) {
                    const tHead = $(
                     `<thead>
+                    <th>Member ID</th>
                     <th>First Name</th>
                     <th>Last Name</th>
                     </thead>`
                 );
                 $('#table-list').append(tHead);
-            result.forEach((member) => {
+                result.forEach((member) => {
                 const returnedMember = $(                    
                     `<tr>
+                        <td>${member.memberid}</td>
                         <td>${member.firstName}</td>
                         <td>${member.lastName}</td>
                     </tr>`
@@ -42,8 +50,20 @@ const search = () => {
     })
 }
 
+
 $(document).ready(function() {    
     $("#create").on("click", create);      
-    search();
-    
+    search();    
+    searchTab();
+
+    $('#member-list').on('click', (event) => {
+        var value = event.target.innerText
+        $.ajax({
+            url: `/update`, 
+            type: "GET"
+        })
+        .done((result) => {            
+            window.location.href = `/update` + '#' + value;
+        })
+    })
 });

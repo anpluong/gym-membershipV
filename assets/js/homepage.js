@@ -31,16 +31,6 @@ const searchMember = () => {
     $("#search").on("click", (e) => {               
          $('body').load('search.html');
     });
-
-    // $.ajax({
-    //     url: "/searchMembership",
-    //     type: "GET"
-    // })
-    // .done((members) => {
-    //     members.forEach((member) => {
-    //         console.log(member);
-    //     })
-    // })
 }
 
 function create() {
@@ -63,17 +53,3 @@ $(document).ready(function() {
 
 
 
-
-// $("#main").on("submit", (e) => {
-//     e.preventDefault();
-//     console.log("Hello")
-// })
-
-// $("#search").on("click", (e) => {
-//     var s = $("#main").contents()
-//     $("#main").remove();
-//     setTimeout(function() {
-//         $(".container").append(s)
-//     }, 1000)
-    
-// })

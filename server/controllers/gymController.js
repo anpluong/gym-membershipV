@@ -34,7 +34,19 @@ gymController.searchMembership = (req, res, next) => {
     let sql = `select * from members where firstName like '${firstName}%' AND lastName like '${lastName}%'`;
     gym.query(sql, (err, result, fields) => {
         res.locals.resultArray = result;
-        console.log(res.locals.resultArray)
+      // console.log(res.locals.resultArray)
+        next();
+    })
+}
+
+gymController.displayMembership = (req, res, next) => {
+    
+    let {memberid} = req.body;
+    //console.log(memberid)
+    let sql = `select * from members where memberid = '${memberid}'`;
+    gym.query(sql, (err, result) => {
+        console.log(result);
+        res.locals.member = result;
         next();
     })
 }

@@ -9,3 +9,7 @@ nav>li{
 #create:hover, #search:hover{
     background-color: lightblue;
 }
+
+#submit-update{
+    float: right;
+}
