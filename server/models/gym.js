@@ -10,13 +10,8 @@ let gym = mysql.createPool({
 
 gym.getConnection(err => {
     if (err) throw err;
-    console.log("Connected");
-    // let sql = `CREATE TABLE IF NOT EXISTS members(
-    //     memberID varchar(30) primary key, firstName varchar(50),
-    //     lastname varchar(50),
-    //     dob date, sex char(1), address varchar(100))
-    //     `
-        let sql = `CREATE TABLE IF NOT EXISTS members(
+
+    let sql = `CREATE TABLE IF NOT EXISTS members(
         memberid varchar(50) primary key,
         firstName varchar(50) not null,
         lastName varchar(50) not null,
@@ -27,7 +22,6 @@ gym.getConnection(err => {
         state varchar(20) not null, 
         zipCode int not null,
         membershipType varchar(20) not null, 
-        status varchar(20) not null, 
         description varchar(100))
         `
     gym.query(sql)

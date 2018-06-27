@@ -12,7 +12,6 @@ const addMember = () => {
             state: $("#state").val(),
             zipcode: $("#zipcode").val(),
             membershipType: $("#membershipType").val(),
-            status: $("#status").val(),
             description: $("#description").val()
         }
 
@@ -29,34 +28,19 @@ const addMember = () => {
 }
 
 const searchMember = () => {
-    $("#search").on("click", (e) => {        
-        $("#main").remove();
-        let main = $(
-            `<div id="main">
-                <form class="form-inline">
-                    <label class="col-2" for="inputFirstName">First Name</label>
-                    <input class="col-4" type="firstname" class="form-control" id="inputFirstName" placeholder="Your First Name">
-                </form>
-                <br>
-                <form class="form-inline">
-                    <label class="col-2" for="inputLastName">Last Name</label>
-                    <input class="col-4" type="lastname" class="form-control" id="inputLastName" placeholder="Your Last Name">
-                </form>
-            </div>
-            `
-        );
-        $(".container").append(main);
+    $("#search").on("click", (e) => {               
+         $('body').load('search.html');
     });
 
-    $.ajax({
-        url: "/searchMembership",
-        type: "GET"
-    })
-    .done((members) => {
-        members.forEach((member) => {
-            console.log(member);
-        })
-    })
+    // $.ajax({
+    //     url: "/searchMembership",
+    //     type: "GET"
+    // })
+    // .done((members) => {
+    //     members.forEach((member) => {
+    //         console.log(member);
+    //     })
+    // })
 }
 
 function create() {

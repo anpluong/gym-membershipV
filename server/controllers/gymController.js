@@ -9,7 +9,7 @@ gymController.postMembership = (req, res, next) => {
     console.log(memberid);
     let sql = `INSERT INTO members(
         memberid, firstName, lastName, dob, sex, address, city, state, 
-        zipCode, membershipType, status, description) values
+        zipCode, membershipType, description) values
      ('${memberid}',
       '${firstName}', 
       '${lastName}', 
@@ -20,7 +20,6 @@ gymController.postMembership = (req, res, next) => {
       '${state}',
       '${zipcode}', 
       '${membershipType}', 
-      '${status}',
       '${description}')`;
     
     gym.query(sql, (err, result) => {
@@ -30,7 +29,14 @@ gymController.postMembership = (req, res, next) => {
     next();
 }
 
-gymController.findMembership = (req, res, next) => {
-
+gymController.searchMembership = (req, res, next) => {
+    let {firstName, lastName} = req.body;
+    let sql = `select * from members where firstName like '${firstName}%' OR lastName like '${lastName}'`;
+    gym.query(sql, (err, result, fields) => {
+        res.locals.resultArray = result;
+        console.log(res.locals.resultArray)
+        next();
+    })
 }
+
 module.exports = gymController;
