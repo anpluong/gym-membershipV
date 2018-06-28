@@ -1,5 +1,5 @@
 const getMemberInfo = () => {
-    var text = window.location.hash.substring(1);
+    let text = window.location.hash.substring(1);
     const data = {
         memberid: text
     }
@@ -20,25 +20,52 @@ const getMemberInfo = () => {
          $("#state").val(result[0].state)
          $("#zipcode").val(result[0].zipCode)
          $("#membershipType").val(result[0].membershipType);
-         $("#description").val(result[0].description);
-    })
-
-
-//    $('#inputFirstName').val(text);
-  
+         $("#description").val(result[0].description);     
+        })
 };
     
 function create() {
     window.location.href = '/';
 }
 
-function search() {
-    
+function search() {    
     window.location.href = '/search';
 }
+
+const update = () => {    
+    let text = window.location.hash.substring(1);
+    $('#submit-update').on("click", (e) => {  
+        e.preventDefault();      
+        const data1 = {           
+           firstName: $('#inputFirstName').val(),
+           lastName: $('#inputLastName').val(),
+           dob: $('#inputDOB').val(),
+           memberid: $('#inputFirstName').val() + $('#inputLastName').val() + $('#inputDOB').val().replace(/-/gi,''),
+           sex: $("input[name='sex']:checked").val(),
+           address: $("#address").val(),
+           city: $("#city").val(),
+           state: $("#state").val(),
+           zipcode: $("#zipcode").val(),
+           membershipType: $("#membershipType").val(),
+           description: $("#description").val(),
+           text
+       }
+   
+       $.ajax({
+           url: "/update",
+           type: "PUT",
+           data: data1
+       })
+       .done((result) => {
+           console.log(result);
+       })
+    })
+}    
+
 
 $(document).ready(() => {
     getMemberInfo();
     $("#create").on("click", create);      
     $("#search").on("click", search);      
+    update();
  });
