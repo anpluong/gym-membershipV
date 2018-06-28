@@ -52,13 +52,20 @@ gymController.displayMembership = (req, res, next) => {
 
 gymController.updateMembership1 = (req, res, next) => {
     
-    let {firstName, lastName, dob, memberid, sex, address, city, state, membershipType, zipcode, status, description} = req.body;
-    //console.log('this is old memberID', text);
+    let {firstName, lastName, dob, memberid, sex, address, city, state, membershipType, zipcode, description} = req.body;
     console.log('this is new memberID', memberid);
 
     let sql1 = `update members set 
     firstName='${firstName}', 
-    lastName='${lastName}'
+    lastName='${lastName}',
+    dob='${dob}',
+    sex='${sex}', 
+    address='${address}',
+    city='${city}',
+    state='${state}',
+    zipCode='${zipcode}',
+    membershipType='${membershipType}',
+    description = '${description}'
     where memberid='${memberid}'`;
 
     gym.query(sql1)
@@ -69,6 +76,15 @@ gymController.updateMembership1 = (req, res, next) => {
 }
 
 module.exports = gymController;
+
+
+
+
+
+
+
+
+
 
 
 // let sql2 = `update members set memberid='${memberid}' where memberid='${text}'`;
