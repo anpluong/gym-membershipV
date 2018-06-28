@@ -36,7 +36,8 @@ app.post("/display", gymController.displayMembership, (req, res) => {
 })
 
 app.put("/update", gymController.updateMembership1, (req, res) => {
-    res.status(200).send(res.locals.updatedMember);
+    console.log(res.locals.updatedMember)
+    res.status(204).send(res.locals.updatedMember);
 })
 
 app.listen(3000, () => console.log('Server started at port 3000'))

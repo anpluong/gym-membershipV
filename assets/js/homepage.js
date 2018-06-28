@@ -5,7 +5,7 @@ const addMember = () => {
             firstName: $('#inputFirstName').val(),
             lastName: $('#inputLastName').val(),
             dob: $('#inputDOB').val(),
-            memberid: $('#inputFirstName').val() + $('#inputLastName').val() + $('#inputDOB').val().replace(/-/gi,''),
+            memberid: $('#inputFirstName').val() + $('#inputLastName').val() + $('#inputDOB').val().replace(/-/gi,'') + Math.random().toString(36).substring(2, 6),
             sex: $("input[name='sex']:checked").val(),
             address: $("#address").val(),
             city: $("#city").val(),

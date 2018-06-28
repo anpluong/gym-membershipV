@@ -40,7 +40,7 @@ const update = () => {
            firstName: $('#inputFirstName').val(),
            lastName: $('#inputLastName').val(),
            dob: $('#inputDOB').val(),
-           memberid: $('#inputFirstName').val() + $('#inputLastName').val() + $('#inputDOB').val().replace(/-/gi,''),
+           memberid: text,
            sex: $("input[name='sex']:checked").val(),
            address: $("#address").val(),
            city: $("#city").val(),
@@ -48,7 +48,6 @@ const update = () => {
            zipcode: $("#zipcode").val(),
            membershipType: $("#membershipType").val(),
            description: $("#description").val(),
-           text
        }
    
        $.ajax({
@@ -58,6 +57,10 @@ const update = () => {
        })
        .done((result) => {
            console.log(result);
+           $('#data-update').empty();
+           $('#data-update').append(document.createTextNode("Data is updated"))
+        // var delay = 1000; 
+        // setTimeout(function(){    window.location.href = '/search'; }, delay);
        })
     })
 }    

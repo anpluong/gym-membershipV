@@ -45,7 +45,6 @@ gymController.displayMembership = (req, res, next) => {
     //console.log(memberid)
     let sql = `select * from members where memberid = '${memberid}'`;
     gym.query(sql, (err, result) => {
-        console.log(result);
         res.locals.member = result;
         next();
     })
@@ -53,23 +52,32 @@ gymController.displayMembership = (req, res, next) => {
 
 gymController.updateMembership1 = (req, res, next) => {
     
-    let {firstName, text, lastName, dob, memberid, sex, address, city, state, membershipType, zipcode, status, description} = req.body;
-    console.log('this is old memberID', text);
+    let {firstName, lastName, dob, memberid, sex, address, city, state, membershipType, zipcode, status, description} = req.body;
+    //console.log('this is old memberID', text);
     console.log('this is new memberID', memberid);
 
     let sql1 = `update members set 
     firstName='${firstName}', 
     lastName='${lastName}'
-    where memberid='${text}'`;
-
-    let sql2 = `update members set memberid='${memberid}' where memberid='${text}'`;
+    where memberid='${memberid}'`;
 
     gym.query(sql1)
-    .then(result1 => {
-        return gym.query(sql2)        
-    }).then(result2 => {
-        console.log(result2);
-    }) 
+       .then(result1 => {
+        res.locals.updatedMember = result1;  
+        next();   
+       })    
 }
 
 module.exports = gymController;
+
+
+// let sql2 = `update members set memberid='${memberid}' where memberid='${text}'`;
+
+//     gym.query(sql1)
+//     .then(result1 => {
+//         return gym.query(sql2)        
+//     }).then(result2 => {
+//         res.locals.updatedMember = result2;
+//         console.log(result2.affectedRows);
+//         next();
+//     }) 
