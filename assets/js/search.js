@@ -57,7 +57,8 @@ $(document).ready(function() {
     searchTab();
 
     $('#member-list').on('click', (event) => {
-        var value = event.target.innerText
+        let value = $('#member-list tr').find('td')[0].innerText;
+            
         $.ajax({
             url: `/update`, 
             type: "GET"
@@ -66,4 +67,4 @@ $(document).ready(function() {
             window.location.href = `/update` + '#' + value;
         })
     })
-});
+})
