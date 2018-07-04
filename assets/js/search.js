@@ -57,7 +57,10 @@ $(document).ready(function() {
     searchTab();
 
     $('#member-list').on('click', (event) => {
-        let value = $('#member-list tr').find('td')[0].innerText;
+        let value = event.target.parentElement.firstElementChild.innerText;
+
+        
+
             
         $.ajax({
             url: `/update`, 

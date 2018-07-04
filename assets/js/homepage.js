@@ -1,11 +1,13 @@
 const addMember = () => {
     $("#main").on("submit", (e) => {
-        e.preventDefault();
+         e.preventDefault();
+         $('#result').empty();
         const data = {
             firstName: $('#inputFirstName').val(),
             lastName: $('#inputLastName').val(),
             dob: $('#inputDOB').val(),
             memberid: 'lc' + Math.random().toString(36).substring(2, 10),
+            ssn: $('#ssn').val(),
             sex: $("input[name='sex']:checked").val(),
             address: $("#address").val(),
             city: $("#city").val(),
@@ -21,9 +23,15 @@ const addMember = () => {
             data
         })
         .done(function(result) {
-            console.log(result, "has been posted");
+            if (result == 'pass') {
+                $('#result').append(result)
+                 location.reload();
+            }
         })
-        location.reload();
+        .fail(function(error) {   
+            $('#result').append(error.responseText)          
+            console.log(error.responseText);
+          })
     })
 }
 

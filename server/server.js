@@ -14,8 +14,13 @@ app.get("/", (req, res) => {
     res.sendFile(path.join(__dirname, '..', './views/main.html'))
 })
 
-app.post("/postMembership", gymController.postMembership, (req, res) => {
-    res.status(200).send(req.body);
+app.post("/postMembership", gymController.postMembership, (req, res) => {    
+    if (res.locals.result=='error') {
+        res.status(404).send("data is duplicated");
+    }
+    else {
+        res.status(200).send("pass");
+    }
 })
 
 app.post("/searchMembership", gymController.searchMembership, (req, res) => {

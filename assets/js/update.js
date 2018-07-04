@@ -14,6 +14,7 @@ const getMemberInfo = () => {
          $('#inputLastName').val(result[0].lastName);
          let dateMember = result[0].dob.split('T');
          $('#inputDOB').val(dateMember[0]);
+         $('#ssn').val(result[0].ssn),
          $("input[name='sex'][value=" + result[0].sex + "]").prop('checked', true);
          $('#address').val(result[0].address);
          $('#city').val(result[0].city);
@@ -40,6 +41,7 @@ const update = () => {
            firstName: $('#inputFirstName').val(),
            lastName: $('#inputLastName').val(),
            dob: $('#inputDOB').val(),
+           ssn: $('#ssn').val(),
            memberid: text,
            sex: $("input[name='sex']:checked").val(),
            address: $("#address").val(),
@@ -56,12 +58,9 @@ const update = () => {
            data: data1
        })
        .done((result) => {
-           console.log(result);
            $('#data-update').empty();
            $('#data-update').append(document.createTextNode("Data is updated"))
-        // var delay = 1000; 
-        // setTimeout(function(){    window.location.href = '/search'; }, delay);
-       })
+        })
     })
 }    
 

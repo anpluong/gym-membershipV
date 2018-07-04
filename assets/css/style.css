@@ -10,6 +10,7 @@ nav>li{
     background-color: lightblue;
 }
 
-#submit-update{
+#submit-update, #submit-btn{
     float: right;
 }
+

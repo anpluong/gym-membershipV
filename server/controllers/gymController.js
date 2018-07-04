@@ -5,12 +5,13 @@ const bodyParser = require('body-parser');
 const gymController = {};
 
 gymController.postMembership = (req, res, next) => {
-    let {firstName, lastName, dob, memberid, sex, address, city, state, membershipType, zipcode, status, description} = req.body;
+    let {ssn, firstName, lastName, dob, memberid, sex, address, city, state, membershipType, zipcode, status, description} = req.body;
     console.log(memberid);
     let sql = `INSERT INTO members(
-        memberid, firstName, lastName, dob, sex, address, city, state, 
+        ssn, memberid, firstName, lastName, dob, sex, address, city, state, 
         zipCode, membershipType, description) values
-     ('${memberid}',
+     ('${ssn}',
+      '${memberid}',
       '${firstName}', 
       '${lastName}', 
       '${dob}',
@@ -20,13 +21,18 @@ gymController.postMembership = (req, res, next) => {
       '${state}',
       '${zipcode}', 
       '${membershipType}', 
-      '${description}')`;
-    
-    gym.query(sql, (err, result) => {
-        console.log(sql)
-        console.log("record is inserted");        
+      '${description}')`;    
+        gym.query(sql, (err, result) => {
+        if (err) {
+            console.log(err.code)
+            res.locals.result = 'error';
+        }
+        else {  
+            res.locals.result = "data is inserted successfully";
+        }
+        next();
     })
-    next();
+
 }
 
 gymController.searchMembership = (req, res, next) => {
@@ -45,6 +51,7 @@ gymController.displayMembership = (req, res, next) => {
     //console.log(memberid)
     let sql = `select * from members where memberid = '${memberid}'`;
     gym.query(sql, (err, result) => {
+        console.log(result)
         res.locals.member = result;
         next();
     })
@@ -52,12 +59,13 @@ gymController.displayMembership = (req, res, next) => {
 
 gymController.updateMembership1 = (req, res, next) => {
     
-    let {firstName, lastName, dob, memberid, sex, address, city, state, membershipType, zipcode, description} = req.body;
+    let {ssn, firstName, lastName, dob, memberid, sex, address, city, state, membershipType, zipcode, description} = req.body;
     console.log('this is new memberID', memberid);
 
     let sql1 = `update members set 
     firstName='${firstName}', 
     lastName='${lastName}',
+    ssn='${ssn}',
     dob='${dob}',
     sex='${sex}', 
     address='${address}',
