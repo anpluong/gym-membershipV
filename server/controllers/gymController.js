@@ -35,6 +35,18 @@ gymController.postMembership = (req, res, next) => {
 
 }
 
+gymController.deleteMembership = (req, res, next) => {
+    let {ssn} = req.body;
+
+    console.log(ssn)
+    let sql = `delete from members where ssn = '${ssn}'`;
+    gym.query(sql, (err, result) => {
+        // console.log(result)
+        res.locals.member = result;
+        next();
+    })
+}
+
 gymController.searchMembership = (req, res, next) => {
     let {firstName, lastName} = req.body;
     let sql = `select * from members where firstName like '${firstName}%' AND lastName like '${lastName}%'`;

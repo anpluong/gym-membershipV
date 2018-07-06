@@ -22,7 +22,7 @@ const getMemberInfo = () => {
          $("#zipcode").val(result[0].zipCode)
          $("#membershipType").val(result[0].membershipType);
          $("#description").val(result[0].description);     
-        })
+     })
 };
     
 function create() {
@@ -65,9 +65,33 @@ const update = () => {
 }    
 
 
+const deleteMember = () => {    
+    $('#submit-delete').on("click", (e) => {  
+        e.preventDefault();  
+        const data = {                       
+            ssn: $('#ssn').val()
+        }
+
+        $.ajax({
+            url: '/delete', 
+            type: 'DELETE',
+            data
+        })
+        .done((result) => {
+            $('#data-update').empty();
+            $('#data-update').append(document.createTextNode("Data is deleted"))
+            setTimeout(function() {
+                window.location.href = '/';
+            }, 3000)
+         })
+    })
+}
+
 $(document).ready(() => {
     getMemberInfo();
     $("#create").on("click", create);      
     $("#search").on("click", search);      
     update();
+    deleteMember();
  });
+

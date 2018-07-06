@@ -10,7 +10,8 @@ nav>li{
     background-color: lightblue;
 }
 
-#submit-update, #submit-btn{
+#submit-update, #submit-btn, #submit-delete{
     float: right;
+    margin-left: 20px;
 }
 

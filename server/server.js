@@ -40,6 +40,11 @@ app.post("/display", gymController.displayMembership, (req, res) => {
     res.status(200).send(res.locals.member);
 })
 
+app.delete("/delete", gymController.deleteMembership, (req, res) => {
+    res.status(200).send(res.locals.member);
+})
+
+
 app.put("/update", gymController.updateMembership1, (req, res) => {
     console.log(res.locals.updatedMember)
     res.status(204).send(res.locals.updatedMember);

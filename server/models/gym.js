@@ -12,7 +12,7 @@ gym.getConnection(err => {
     if (err) throw err;
 
     let sql = `CREATE TABLE IF NOT EXISTS members(
-        ssn varchar(50) not null primary key,
+        ssn int not null primary key,
         memberid varchar(50),
         firstName varchar(50) not null,        
         lastName varchar(50) not null,

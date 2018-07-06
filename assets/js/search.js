@@ -58,9 +58,6 @@ $(document).ready(function() {
 
     $('#member-list').on('click', (event) => {
         let value = event.target.parentElement.firstElementChild.innerText;
-
-        
-
             
         $.ajax({
             url: `/update`, 

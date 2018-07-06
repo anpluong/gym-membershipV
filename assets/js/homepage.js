@@ -24,14 +24,17 @@ const addMember = () => {
         })
         .done(function(result) {
             if (result == 'pass') {
-                $('#result').append(result)
-                 location.reload();
+                $('#result').append("Data is inserted")
+                setTimeout(function() {
+                    window.location.href = '/';
+                }, 3000)
             }
         })
         .fail(function(error) {   
-            $('#result').append(error.responseText)          
+            $('#result').append(error.responseText + " OR " + " wrong data input")          
             console.log(error.responseText);
           })
+          
     })
 }
 
